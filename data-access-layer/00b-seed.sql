@@ -34,8 +34,6 @@ CREATE TABLE recipes (
 );
 
 
-
-
 -- Create a table for the "instructions". It will need the following columns in
 -- it. The "PK" in the constraints column means the column is a "primary key".
 -- "FK" in the constraints means that its a "foreign key". You should be able to
