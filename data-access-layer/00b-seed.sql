@@ -9,7 +9,7 @@
 
 -- YOUR CODE HERE
 
-
+psql -U recipe_box_app recipe_box;
 
 
 
@@ -26,7 +26,12 @@
 
 -- YOUR CODE HERE
 
-
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
 
 
 
@@ -49,7 +54,12 @@
 -- YOUR CODE HERE
 
 
-
+CREATE TABLE instructions (
+    id SERIAL PRIMARY KEY,
+    specification TEXT NOT NULL, 
+    list_order INT NOT NULL,
+    INT FOREIGN KEY (recipe_id) REFERENCES recipes(id) NOT NULL
+)
 
 
 
