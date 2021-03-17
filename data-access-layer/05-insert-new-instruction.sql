@@ -41,5 +41,10 @@
 --   «positional parameter»,
 -- )
 
+INSERT INTO instructions (specification, recipe_id)
+VALUES ($1, $2);
+
+
+SELECT COALESCE(MAX(id) FROM list_order, 1)
 
 -- YOUR CODE HERE
