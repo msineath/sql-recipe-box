@@ -9,7 +9,7 @@
 
 -- YOUR CODE HERE
 
-psql -U recipe_box_app recipe_box;
+SET ROLE recipe_box_app;
 
 
 
@@ -31,7 +31,7 @@ CREATE TABLE recipes (
     title VARCHAR(200) NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 
 
@@ -58,8 +58,8 @@ CREATE TABLE instructions (
     id SERIAL PRIMARY KEY,
     specification TEXT NOT NULL, 
     list_order INT NOT NULL,
-    INT FOREIGN KEY (recipe_id) REFERENCES recipes(id) NOT NULL
-)
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id)
+);
 
 
 
@@ -74,7 +74,10 @@ CREATE TABLE instructions (
 
 -- YOUR CODE HERE
 
-
+CREATE TABLE units_of_measure (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(20) NOT NULL
+);
 
 
 
@@ -97,7 +100,13 @@ CREATE TABLE instructions (
 
 -- YOUR CODE HERE
 
-
+CREATE TABLE ingredients (
+    id SERIAL PRIMARY KEY,
+    amount NUMERIC(5, 2) NOT NULL,
+    FOREIGN KEY (unit_of_measure_id) REFERENCES units_of_measure(id) NOT NULL,
+    food_stuff VARCHAR(500) NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id) NOT NULL
+);
 
 
 
