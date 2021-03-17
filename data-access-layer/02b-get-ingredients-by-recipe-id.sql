@@ -26,9 +26,9 @@
 
 
 
-SELECT amount, food_stuff FROM ingredients
+SELECT amount, food_stuff, name FROM ingredients
 JOIN units_of_measure ON (ingredients.unit_of_measure_id = units_of_measure.id)
-WHERE id = $1;
+WHERE recipe_id = $1;
 
 
 
