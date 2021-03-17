@@ -24,17 +24,6 @@
 -- WHERE ... (here you'll use the $1 parameter)
 --
 
-
-
-SELECT amount, food_stuff FROM ingredients
-JOIN units_of_measure ON (ingredients.unit_of_measure_id = units_of_measure.id)
-WHERE id = $1;
-
-
-
-
-
-
 -- For example, using JOIN on a table named "weather" and "cities" to get the
 -- weather records for each city record, you would write:
 --
@@ -50,4 +39,15 @@ WHERE id = $1;
 -- JOIN weather ON (weather.city = cities.name)
 
 
+
+
+
 -- YOUR CODE HERE
+
+
+
+
+
+SELECT name, amount, food_stuff FROM ingredients
+JOIN units_of_measure ON (ingredients.unit_of_measure_id = units_of_measure.id)
+WHERE recipe_id = $1;
